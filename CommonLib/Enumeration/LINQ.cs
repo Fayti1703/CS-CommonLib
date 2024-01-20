@@ -69,4 +69,22 @@ public static partial class EnumerationExtensions {
 	public static IEnumerable<T> WhereNotNull<T>(this IEnumerable<T?> enumerable) where T : struct {
 		return enumerable.Where(x => x.HasValue).Select(x => x!.Value);
 	}
+
+	public static T? FirstOrNull<T>(this IEnumerable<T> collection) where T : struct {
+		using IEnumerator<T> enumerator = collection.GetEnumerator();
+
+		if(enumerator.MoveNext())
+			return enumerator.Current;
+
+		return null;
+	}
+
+	public static T? FirstOrNull<T>(this IEnumerable<T> collection, Predicate<T> predicate) where T : struct {
+		foreach(T candidate in collection) {
+			if(predicate(candidate))
+				return candidate;
+		}
+
+		return null;
+	}
 }
