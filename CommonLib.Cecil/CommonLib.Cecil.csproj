@@ -1,0 +1,37 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<PackageId>Fayti1703.CommonLib.Cecil</PackageId>
+		<Authors>Fayti1703</Authors>
+		<PackageTags>cecil</PackageTags>
+		<RepositoryUrl>https://github.com/Fayti1703/CS-CommonLib</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+		<PackageLicenseExpression>MPL-2.0-no-copyleft-exception</PackageLicenseExpression>
+		<PackageVersion>1.0.0</PackageVersion>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<ImplicitUsings>disable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<RootNamespace>Fayti1703.CommonLib.Cecil</RootNamespace>
+		<AssemblyName>Fayti1703.CommonLib.Cecil</AssemblyName>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Include="README.md" Pack="true" PackagePath="/" />
+		<None Include="../LICENSE" Pack="true" PackagePath="/" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="Mono.Cecil" Version="0.11.5" PrivateAssets="all" IncludeAssets="compile" />
+		<PackageReference Include="JetBrains.Annotations" Version="2023.3.0" PrivateAssets="all" IncludeAssets="compile" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\CommonLib\CommonLib.csproj" />
+	</ItemGroup>
+
+</Project>

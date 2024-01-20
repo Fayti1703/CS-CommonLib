@@ -1,0 +1,32 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<PackageId>Fayti1703.CommonLib</PackageId>
+		<Authors>Fayti1703</Authors>
+		<PackageTags></PackageTags>
+		<RepositoryUrl>https://github.com/Fayti1703/CS-CommonLib</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+		<PackageLicenseExpression>MPL-2.0-no-copyleft-exception</PackageLicenseExpression>
+		<PackageVersion>1.0.0</PackageVersion>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<ImplicitUsings>disable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<RootNamespace>Fayti1703.CommonLib</RootNamespace>
+		<AssemblyName>Fayti1703.CommonLib</AssemblyName>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Include="README.md" Pack="true" PackagePath="/" />
+		<None Include="../LICENSE" Pack="true" PackagePath="/" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="JetBrains.Annotations" Version="2023.3.0" PrivateAssets="all" IncludeAssets="compile" />
+	</ItemGroup>
+
+</Project>
