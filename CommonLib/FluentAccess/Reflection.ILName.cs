@@ -47,7 +47,7 @@ public static partial class Reflection {
 			builder.Append(typeRef.Namespace).Append('.');
 
 		builder.Append(typeRef.Name);
-		if(typeRef is not { IsGenericType: true, IsGenericTypeDefinition: false })
+		if(!typeRef.IsConstructedGenericType)
 			return builder;
 
 		builder.Append('<');
