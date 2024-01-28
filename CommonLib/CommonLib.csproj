@@ -18,6 +18,7 @@
 		<Nullable>enable</Nullable>
 		<RootNamespace>Fayti1703.CommonLib</RootNamespace>
 		<AssemblyName>Fayti1703.CommonLib</AssemblyName>
+		<Deterministic>true</Deterministic>
 	</PropertyGroup>
 
 	<ItemGroup>

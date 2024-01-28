@@ -18,6 +18,7 @@
 		<Nullable>enable</Nullable>
 		<RootNamespace>Fayti1703.CommonLib.Cecil</RootNamespace>
 		<AssemblyName>Fayti1703.CommonLib.Cecil</AssemblyName>
+		<Deterministic>true</Deterministic>
 	</PropertyGroup>
 
 	<ItemGroup>
