@@ -67,7 +67,7 @@ public static partial class CecilExtensions {
 
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static MethodDefinition? CtorQ(this TypeDefinition type, params TypeReference[] args) =>
-		type.Methods.Where(x => x.IsStatic).FindBestOverloadForCall(args);
+		type.Methods.Where(x => x.IsStatic).FindBestOverload(args);
 
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static MethodDefinition? CctorQ(this TypeDefinition type) =>
@@ -89,7 +89,7 @@ public static partial class CecilExtensions {
 
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static MethodDefinition? MthQ(this TypeDefinition type, string name, params TypeReference[] args) =>
-		type.Methods.Where(x => x.Name == name).FindBestOverloadForCall(args);
+		type.Methods.Where(x => x.Name == name).FindBestOverload(args);
 
 	public static TypeDefinition? TypeQ(this TypeDefinition type, string name)
 		=> type.NestedTypes.FirstOrDefault(x => x.Name == name);
@@ -132,7 +132,8 @@ public static partial class CecilExtensions {
 
 	#endregion
 
-	public static MethodDefinition? FindBestOverloadForCall(this IEnumerable<MethodDefinition> candidates, TypeReference[] args) {
+	
+	public static MethodDefinition? FindBestOverload(this IEnumerable<MethodDefinition> candidates, TypeReference[] args) {
 		MethodDefinition? bestCandidate = null;
 		foreach(MethodDefinition candidate in candidates) {
 			Collection<ParameterDefinition> @params = candidate.Parameters;
@@ -151,4 +152,8 @@ public static partial class CecilExtensions {
 
 		return bestCandidate;
 	}
+
+	[Obsolete("Use FindBestOverload instead")]
+	public static MethodDefinition? FindBestOverloadForCall(this IEnumerable<MethodDefinition> candidates, TypeReference[] args) =>
+		candidates.FindBestOverload(args);
 }

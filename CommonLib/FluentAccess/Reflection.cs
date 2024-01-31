@@ -25,7 +25,7 @@ public static partial class Reflection {
 
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static ConstructorInfo? CtorQ(this TypeInfo type, params Type[] args) =>
-		type.DeclaredConstructors.Where(x => !x.IsStatic).FindBestOverloadForCall(args);
+		type.DeclaredConstructors.Where(x => !x.IsStatic).FindBestOverload(args);
 
 	public static ConstructorInfo? CctorQ(this TypeInfo type) =>
 		type.DeclaredConstructors.FirstOrDefault(x => x.IsStatic);
@@ -45,7 +45,7 @@ public static partial class Reflection {
 
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static MethodInfo? MthQ(this TypeInfo type, string name, params Type[] args) =>
-		type.GetDeclaredMethods(name).FindBestOverloadForCall(args);
+		type.GetDeclaredMethods(name).FindBestOverload(args);
 
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static TypeInfo? TypeQ(this TypeInfo type, string name) =>
@@ -95,7 +95,7 @@ public static partial class Reflection {
 		return new MissingMemberException(typeILName, what, name, overloadILNames?.ToArray());
 	}
 
-	public static T? FindBestOverloadForCall<T>(this IEnumerable<T> candidates, Type[] args) where T : MethodBase {
+	public static T? FindBestOverload<T>(this IEnumerable<T> candidates, Type[] args) where T : MethodBase {
 		T? bestCandidate = null;
 		foreach(T candidate in candidates) {
 			ParameterInfo[] @params = candidate.GetParameters();
@@ -114,4 +114,8 @@ public static partial class Reflection {
 
 		return bestCandidate;
 	}
+
+	[Obsolete("Use FindBestOverload instead")]
+	public static T? FindBestOverloadForCall<T>(this IEnumerable<T> candidates, Type[] args) where T : MethodBase =>
+		candidates.FindBestOverload(args);
 }
