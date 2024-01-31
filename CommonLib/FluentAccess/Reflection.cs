@@ -107,7 +107,7 @@ public static partial class Reflection {
 			if(bestCandidate == null)
 				bestCandidate = candidate;
 			else {
-				if(bestCandidate.GetParameters().Length > candidate.GetParameters().Length)
+				if(bestCandidate.GetParameters().Length > @params.Length)
 					bestCandidate = candidate;
 			}
 		}

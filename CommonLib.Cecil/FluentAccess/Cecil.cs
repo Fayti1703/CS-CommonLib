@@ -145,7 +145,7 @@ public static partial class CecilExtensions {
 			if(bestCandidate == null)
 				bestCandidate = candidate;
 			else {
-				if(bestCandidate.Parameters.Count > candidate.Parameters.Count)
+				if(bestCandidate.Parameters.Count > @params.Count)
 					bestCandidate = candidate;
 			}
 		}
