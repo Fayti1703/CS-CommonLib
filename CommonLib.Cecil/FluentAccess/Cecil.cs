@@ -140,7 +140,7 @@ public static partial class CecilExtensions {
 			if(@params.Count < args.Length) continue;
 			if(!@params.WithIndex().All(b => {
 				   (int index, ParameterDefinition param) = b;
-				   return index >= args.Length ? param.IsOptional : param.ParameterType == args[index];
+				   return index >= args.Length ? param.IsOptional : param.ParameterType.FullName == args[index].FullName;
 			   })) continue;
 			if(bestCandidate == null)
 				bestCandidate = candidate;
